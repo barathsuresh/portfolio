@@ -27,8 +27,8 @@
 /* Circular photo — inset so the scribble ring shows around it */
 .avatar-boil-photo {
     position: relative;
-    width: 78.6%;
-    height: 78.6%;
+    width: 83.3%;
+    height: 83.3%;
     border-radius: 50%;
     overflow: hidden;
     background: var(--surface2);

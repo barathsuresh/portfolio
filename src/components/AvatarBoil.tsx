@@ -54,7 +54,7 @@ const FRAMES_R2 = RING2_WOBBLES.map(w => wobblyPath(CX, CY, R2, w));
 const FPS = 10;
 const INTERVAL = Math.round(1000 / FPS);
 
-export default function AvatarBoil({ size = 310 }: { size?: number }) {
+export default function AvatarBoil() {
     const [frame, setFrame] = useState(0);
 
     useEffect(() => {
@@ -65,8 +65,8 @@ export default function AvatarBoil({ size = 310 }: { size?: number }) {
     return (
         <svg
             className="avatar-boil"
-            width={size}
-            height={size}
+            width="100%"
+            height="100%"
             viewBox="0 0 300 300"
             xmlns="http://www.w3.org/2000/svg"
             aria-hidden="true"

@@ -29,7 +29,7 @@ export default function About() {
                     <SectionReveal delay={0.1} className="about__avatar-wrap">
                         <div className="avatar-boil-wrap">
                             {/* Hand-drawn boiling circle SVG — drawn on top */}
-                            <AvatarBoil size={280} />
+                            <AvatarBoil />
 
                             {/* Circular photo inset inside the scribble ring */}
                             <div className="avatar-boil-photo">
