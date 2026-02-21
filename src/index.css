@@ -1,0 +1,6 @@
+/* index.css – minimal reset, globals.css handles the full design system */
+/* This file intentionally minimal; all styling is in globals.css + component CSS */
+
+#root {
+  min-height: 100vh;
+}

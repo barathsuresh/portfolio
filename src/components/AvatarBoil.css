@@ -1,0 +1,17 @@
+/* The SVG is absolutely positioned over the photo */
+.avatar-boil {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 2;
+    overflow: visible;
+}
+
+/* Reduce motion: freeze on first frame (still shows scribble, just static) */
+@media (prefers-reduced-motion: reduce) {
+    .avatar-boil {
+        animation: none;
+    }
+}
