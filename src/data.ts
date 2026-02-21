@@ -18,9 +18,9 @@ distributed systems, real-time communication, and cloud-native tooling. I love t
 complex engineering problems into clean, observable, and maintainable solutions.`,
     interests: ["Backend Systems", "Distributed Computing", "AI/ML Infrastructure"],
     // ── DROP your photo in the public/ folder, then set filename here ──
-    profileImage: "/profile.jpg", // e.g. "/profile.jpg"  →  public/profile.jpg
+    profileImage: `${import.meta.env.BASE_URL}profile.jpg`, // Works with both local (/) and deployed (/portfolio/)
     // ── DROP your resume PDF in the public/ folder, then set filename here ──
-    resumeUrl: "/Barath_Suresh_Resume.pdf",    // e.g. "/Barath_Suresh_Resume.pdf" → public/Barath_Suresh_Resume.pdf
+    resumeUrl: `${import.meta.env.BASE_URL}Barath_Suresh_Resume.pdf`,    // Works with both local (/) and deployed (/portfolio/)
 };
 
 // ── Social Links ─────────────────────────────────────────────
