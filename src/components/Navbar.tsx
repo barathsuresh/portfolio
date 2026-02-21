@@ -107,27 +107,30 @@ export default function Navbar() {
             </div>
 
             {/* Mobile menu */}
-            <motion.div
-                className="navbar__mobile hide-desktop"
-                initial={false}
-                animate={{ height: menuOpen ? "auto" : 0, opacity: menuOpen ? 1 : 0 }}
-                transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-                style={{ overflow: "hidden" }}
-            >
-                <ul className="navbar__mobile-links">
-                    {navLinks.map(({ label, href }) => (
-                        <li key={href}>
-                            <a
-                                href={href}
-                                className={`navbar__mobile-link ${activeSection === href ? "navbar__mobile-link--active" : ""}`}
-                                onClick={(e) => handleNavClick(e, href)}
-                            >
-                                {label}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
-            </motion.div>
+            {menuOpen && (
+                <motion.div
+                    className="navbar__mobile hide-desktop"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+                    style={{ overflow: "hidden" }}
+                >
+                    <ul className="navbar__mobile-links">
+                        {navLinks.map(({ label, href }) => (
+                            <li key={href}>
+                                <a
+                                    href={href}
+                                    className={`navbar__mobile-link ${activeSection === href ? "navbar__mobile-link--active" : ""}`}
+                                    onClick={(e) => handleNavClick(e, href)}
+                                >
+                                    {label}
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </motion.div>
+            )}
         </motion.nav>
     );
 }
