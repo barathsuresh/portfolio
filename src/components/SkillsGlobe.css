@@ -85,10 +85,26 @@
     }
 }
 
-/* Mobile: shrink globe */
+/* Tablet: medium globe */
+@media (max-width: 768px) {
+    .globe-stage {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+/* Mobile: shrink globe even more */
 @media (max-width: 520px) {
     .globe-stage {
-        width: 340px;
-        height: 340px;
+        width: 240px;
+        height: 240px;
+    }
+}
+
+/* Small mobile: minimum globe size */
+@media (max-width: 375px) {
+    .globe-stage {
+        width: 200px;
+        height: 200px;
     }
 }

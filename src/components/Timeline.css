@@ -140,9 +140,26 @@
     opacity: 0.7;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .timeline__item {
         grid-template-columns: 24px 1fr;
         gap: 0 1rem;
+    }
+
+    .timeline__tabs {
+        gap: 0;
+        margin-bottom: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .timeline__item {
+        grid-template-columns: 20px 1fr;
+        gap: 0 0.75rem;
+    }
+
+    .timeline__tab {
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
     }
 }

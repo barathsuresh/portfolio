@@ -52,6 +52,7 @@ function fibonacciSphere(count: number) {
 export default function SkillsGlobe() {
     const containerRef = useRef<HTMLDivElement>(null);
     const tagsRef = useRef<HTMLDivElement[]>([]);
+    const radiusRef = useRef(220);
 
     // Spherical positions (unit sphere)
     const positions = useMemo(() => fibonacciSphere(allSkills.length), []);
@@ -65,13 +66,21 @@ export default function SkillsGlobe() {
     const lastMouse = useRef({ x: 0, y: 0 });
     const rafId = useRef<number>(0);
 
-    const RADIUS = 220; // px
+    // Responsive radius: scales based on window width
+    const updateRadius = () => {
+        const width = typeof window !== "undefined" ? window.innerWidth : 768;
+        if (width < 375) radiusRef.current = 100;    // very small phone
+        else if (width < 480) radiusRef.current = 120;    // small phone
+        else if (width < 768) radiusRef.current = 140;    // larger phone/tablet
+        else radiusRef.current = 220; // desktop
+    };
 
     function applyPositions() {
         const cosX = Math.cos(rotX.current);
         const sinX = Math.sin(rotX.current);
         const cosY = Math.cos(rotY.current);
         const sinY = Math.sin(rotY.current);
+        const RADIUS = radiusRef.current;
 
         tagsRef.current.forEach((el, i) => {
             if (!el) return;
@@ -114,6 +123,9 @@ export default function SkillsGlobe() {
     }
 
     useEffect(() => {
+        // Set initial radius
+        updateRadius();
+        
         rafId.current = requestAnimationFrame(tick);
 
         const container = containerRef.current;
@@ -160,12 +172,17 @@ export default function SkillsGlobe() {
             lastMouse.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
         }
 
+        function onResize() {
+            updateRadius();
+        }
+
         container.addEventListener("mousedown", onMouseDown);
         window.addEventListener("mousemove", onMouseMove);
         window.addEventListener("mouseup", onMouseUp);
         container.addEventListener("touchstart", onTouchStart, { passive: true });
         window.addEventListener("touchmove", onTouchMove, { passive: true });
         window.addEventListener("touchend", onMouseUp);
+        window.addEventListener("resize", onResize);
 
         return () => {
             cancelAnimationFrame(rafId.current);
@@ -175,6 +192,7 @@ export default function SkillsGlobe() {
             container.removeEventListener("touchstart", onTouchStart);
             window.removeEventListener("touchmove", onTouchMove);
             window.removeEventListener("touchend", onMouseUp);
+            window.removeEventListener("resize", onResize);
         };
     }, []);
 

@@ -145,3 +145,9 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (max-width: 480px) {
+    .contact__grid {
+        padding: 0 clamp(1rem, 3vw, 1.5rem);
+    }
+}
